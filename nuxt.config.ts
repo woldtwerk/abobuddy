@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxt/ui"],
+  modules: ["@nuxt/eslint", "@nuxt/ui", "@vueuse/nuxt"],
 
   devtools: {
     enabled: true,
@@ -13,6 +13,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-01-15",
+
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 
   eslint: {
     config: {
