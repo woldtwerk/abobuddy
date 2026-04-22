@@ -77,12 +77,12 @@ For GitHub Actions, consider using [`voidzero-dev/setup-vp`](https://github.com/
 - uses: voidzero-dev/setup-vp@v1
   with:
     cache: true
-- run: vp check
+- run: pnpm check
 - run: vp test
 ```
 
 ## Review Checklist for Agents
 
 - [ ] Run `vp install` after pulling remote changes and before getting started.
-- [ ] Run `vp check` and `vp test` to validate changes.
+- [ ] Run `pnpm check` and `vp test` to validate changes.
 <!--VITE PLUS END-->

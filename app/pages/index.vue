@@ -1,21 +1,39 @@
 <script setup lang="ts">
-import { renderSVG } from "uqr";
+import { address } from '@solana/kit'
 
-const username = "wwoldt";
-const amount = "10";
+const username = 'wwoldt'
+const amount = '10'
+const paypal = new URL(`https://paypal.me/${username}/${amount}EUR`)
 
-const paypalme = () => {
-  const url = new URL(`https://paypal.me/${username}/${amount}EUR`);
-  return renderSVG(url.toString());
-};
+const solanaPayLink = `solana:3TkF4zrieqbfijX1osRz6KLWX4DsYPqiuV5L4g7XXmou?${new URLSearchParams({
+  amount: '10',
+  label: 'Abo Buddy',
+  message: 'Subscription payment'
+}).toString()}`
 
-console.log(paypalme());
+const eurcPayLink = `solana:3TkF4zrieqbfijX1osRz6KLWX4DsYPqiuV5L4g7XXmou?${new URLSearchParams({
+  'spl-token': 'HzwqbKZw8HxMN6bF2yFZNrht3c2iXXzpKcFu7uBEDKtr',
+  'amount': '10',
+  'label': 'Abo Buddy',
+  'message': 'Subscription payment'
+}).toString()}`
 </script>
 
 <template>
   <div>
     <UPageSection>
-      <div class="w-80" v-html="paypalme()" />
+      <QrCode
+        :url="paypal"
+        logo="logos:paypal"
+      />
+      <QrCode
+        :url="solanaPayLink"
+        logo="token-branded:solana"
+      />
+      <QrCode
+        :url="eurcPayLink"
+        logo="token-branded:eurc"
+      />
     </UPageSection>
   </div>
 </template>
