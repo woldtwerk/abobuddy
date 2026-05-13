@@ -87,6 +87,8 @@ useIntervalFn(() => {
     })
   )
 }, 2000)
+
+const solflare = useSolflare()
 </script>
 
 <template>
@@ -128,6 +130,24 @@ useIntervalFn(() => {
           :url="eurcPayLink"
           logo="token-branded:eurc"
         />
+      </div>
+
+      <div>
+        {{ solflare.connected }}
+        <UButton
+          class="mt-8"
+          color="primary"
+          @click="solflare.connect"
+        >
+          Connect Solflare
+        </UButton>
+        <UButton
+          class="mt-8"
+          color="primary"
+          @click="solflare.disconnect"
+        >
+          Disconnect Solflare
+        </UButton>
       </div>
     </UPageSection>
   </div>
